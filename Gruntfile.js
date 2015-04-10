@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
 		clean: {
 			build: {
-				src: ['dist/']
+				src: 'dist/'
 			}
 		},
 
@@ -12,19 +12,24 @@ module.exports = function(grunt) {
 			main: {
 				expand: true,
 				cwd: 'src',
-				src: ['**', '!assets/css/**', '!**/*.jade'],
+				src: [
+					'*.*',
+					'assets/**/*',
+					'!assets/css/**'
+				],
 				dest: 'dist/',
 			},
 		},
 
 		jadephp: {
 			options: {
-				pretty: true
+				pretty: true,
+				basedir: 'src/'
 			},
 			compile: {
 				expand: true,
 				cwd: 'src/',
-				src: 'layouts/**/*.twig.jade',
+				src: 'templates/layouts/**/*.jade',
 				dest: 'dist/',
 				ext: '.twig'
 			}
@@ -36,14 +41,14 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/style.css': 'src/assets/css/main.sass'
+					'dist/assets/css/main.css': 'src/assets/css/main.sass'
 				}
 			}
 		},
 
 		autoprefixer: {
 			no_dest: {
-				src: 'dist/style.css'
+				src: 'dist/assets/css/main.css'
 			},
 			options: {
 				map: true
@@ -54,7 +59,8 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					removeComments: true,
-					collapseWhitespace: true
+					collapseWhitespace: true,
+					keepClosingSlash: true // to maintain SVG structure
 				},
 				files: [
 					{
@@ -78,7 +84,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'dist/',
-						src: '**/*.{twig,css,js}',
+						src: '**/*.{twig, css, js}',
 						dest: 'dist/'
 					}
 				]
@@ -97,17 +103,17 @@ module.exports = function(grunt) {
 			},
 
 			jade: {
-				files: ['src/layouts/**/*.jade'],
+				files: ['src/templates/**/*.jade'],
 				tasks: ['jadephp']
 			},
 
 			css: {
-				files: ['src/assets/css/**/*.sass', 'src/assets/css/**/*.scss'],
+				files: ['src/assets/css/**/*.{sass, scss}'],
 				tasks: ['sass']
 			},
 
 			img: {
-				files: ['src/**/*.jpg', 'src/**/*.png'],
+				files: ['src/**/*.{jpg, png, svg}'],
 				tasks: ['copy']
 			}
 		}
