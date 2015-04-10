@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 					{
 						expand: true,
 						cwd: 'dist/',
-						src: '**/*.{twig, css, js}',
+						src: '**/*.{twig,css,js}',
 						dest: 'dist/'
 					}
 				]
@@ -108,12 +108,12 @@ module.exports = function(grunt) {
 			},
 
 			css: {
-				files: ['src/assets/css/**/*.{sass, scss}'],
+				files: ['src/assets/css/**/*.{sass,scss}'],
 				tasks: ['sass']
 			},
 
 			img: {
-				files: ['src/**/*.{jpg, png, svg}'],
+				files: ['src/**/*.{jpg,png,svg}'],
 				tasks: ['copy']
 			}
 		}
