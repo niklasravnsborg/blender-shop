@@ -1,0 +1,37 @@
+.header
+	background: #eee
+	padding: 10px 0
+	border-bottom: 1px solid #e2e2e2
+	+cf
+
+	a
+		border: none
+
+	&__logo
+		display: block
+
+		@media (max-width: 499px)
+			margin-bottom: 10px
+
+		@media (min-width: 500px)
+			float: left
+
+	&__nav
+		@media (min-width: 500px)
+			float: right
+			margin-top: .2em
+
+		a
+			display: inline-block
+			padding: .3em 0
+			margin-right: 10px
+
+			color: $dark2
+			text-transform: uppercase
+			letter-spacing: -1px
+
+			&:hover
+				color: $accent
+
+			&:last-child
+				margin-right: 0
