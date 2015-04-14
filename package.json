@@ -8,8 +8,9 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-jade": "^0.14.1",
     "grunt-contrib-sass": "^0.8.1",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-jade-php": "^0.1.0"
+    "js-yaml": "^3.2.7"
   }
 }

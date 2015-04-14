@@ -1,3 +1,30 @@
+var yaml = require('js-yaml');
+var fs = require('fs');
+var data = {}; // objects coverted from YAML will be stored here
+
+// used to merge two Objects
+function extend(destination, source) {
+	for (var property in source) {
+		destination[property] = source[property];
+	}
+}
+
+// load YAML from src/data/ and add it to data object
+(function loadYaml() {
+	var fileMatch = '.yml';
+	var dir = 'src/data/';
+
+	if (fs.existsSync(dir)) {
+		var files = fs.readdirSync(dir);
+		for (var i in files) {
+			if (files[i].match(fileMatch + '$') == fileMatch) {
+				extend(data, yaml.load(fs.readFileSync(dir + files[i])));
+			}
+		}
+	}
+})();
+
+
 module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
@@ -21,8 +48,9 @@ module.exports = function(grunt) {
 			},
 		},
 
-		jadephp: {
+		jade: {
 			options: {
+				data: data,
 				pretty: true,
 				basedir: 'src/'
 			},
@@ -103,8 +131,8 @@ module.exports = function(grunt) {
 			},
 
 			jade: {
-				files: ['src/templates/**/*.jade'],
-				tasks: ['jadephp']
+				files: ['src/templates/**/*.jade', 'src/data/*.yml'],
+				tasks: ['jade']
 			},
 
 			css: {
@@ -121,7 +149,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
-	grunt.loadNpmTasks('grunt-jade-php');
+	grunt.loadNpmTasks('grunt-contrib-jade');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 
@@ -130,7 +158,7 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('build-dev',        ['clean', 'copy', 'jadephp', 'sass', 'autoprefixer']);
+	grunt.registerTask('build-dev',        ['clean', 'copy', 'jade', 'sass', 'autoprefixer']);
 	grunt.registerTask('build-production', ['build-dev', 'htmlmin', 'class-id-minifier']);
 	grunt.registerTask('default',          ['build-dev', 'watch']);
 };
