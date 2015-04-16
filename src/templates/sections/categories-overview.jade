@@ -1,0 +1,14 @@
+.categories-overview
+	.container
+		each cat in categoriesOverview
+			.categories-overview__category
+				h4= cat.category
+				p= cat.description
+				hr
+				.product-card
+					h5.product-card__title= cat.exampleProduct.title
+					p= cat.exampleProduct.description
+					.product-card__meta
+						span= cat.exampleProduct.price
+						| 
+						a.product-card__view(href="#{ cat.exampleProduct.link }") View

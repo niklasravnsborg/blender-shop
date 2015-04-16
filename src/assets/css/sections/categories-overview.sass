@@ -1,0 +1,32 @@
+.categories-overview
+	+cf
+	padding: 80px 0
+	background: linear-gradient(to bottom, #fff 50%, #f4f4f4 100%)
+	&__category
+		@media (max-width: 899px)
+			margin-bottom: 4em
+
+		@media (min-width: 900px)
+			float: left
+			width: 33.33%
+			padding: 0 20px
+
+.product-card
+	&__title
+		margin-bottom: .5em
+
+	&__meta
+		+cf
+
+	&__price
+		float: left
+
+	&__view
+		float: right
+		padding: 5px 10px
+		border: none
+		color: white
+		background: $accent
+		&:hover
+			color: white
+			background: lighten($accent, 8%)

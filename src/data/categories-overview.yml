@@ -1,0 +1,39 @@
+categoriesOverview:
+  -
+    category: Books
+    description: >
+      The official Blender Foundation books
+      and the best third party books.
+    exampleProduct:
+      title: Art of Blender
+      description: >
+        A full color, high quality printed art book
+        with the best of Blender artwork of past the years.
+      price: 28.50 €
+      link: http://www.blender3d.org/e-shop/product_info_n.php?products_id=164
+
+  -
+    category: Training
+    description: >
+      Get the Open Movie/Game project DVDs,
+      and the Open Workshop training DVDs.
+    exampleProduct:
+      title: Humane Rigging
+      description: >
+        Everything you need to learn rigging, by
+        Nathan Vegdahl who did rigging on Sintel.
+      price: 27.50 €
+      link: http://www.blender3d.org/e-shop/product_info_n.php?products_id=146
+
+  -
+    category: Merchandise
+    description: >
+      Shirts, Posters, Stickers, Blender
+      Conference tickets and much more.
+    exampleProduct:
+      title: Blender Shirt
+      description: >
+        Electric blue, high quality American Apparel shirt with a
+        Blender logo on front – available in different sizes.
+      price: 24.00 €
+      link: http://www.blender3d.org/e-shop/product_info_n.php?products_id=80
