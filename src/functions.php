@@ -17,3 +17,5 @@ function add_to_context($data) {
 	$data['menu'] = new TimberMenu();
 	return $data;
 }
+
+include 'settings.php';
