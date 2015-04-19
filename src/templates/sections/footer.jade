@@ -1,0 +1,9 @@
+footer.footer
+	.container
+		h2.footer__heading {{ site.name }}
+		.footer__meta {{ site.site_owner }} {{ 'now'|date('Y') }}
+		nav.footer__nav
+			| {% for item in footer_menu.get_items %}
+			a(href="{{ item.get_link }}") {{ item.title }}
+			| {% if not loop.last %} • {% endif %}
+			| {% endfor %}

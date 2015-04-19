@@ -5,6 +5,7 @@ $title = 'Theme Settings';
 
 function text_input($input) {
 	$name = $input['name'];
+	$description = $input['description'];
 
 	echo '<input
 		class="regular-text"
@@ -12,6 +13,10 @@ function text_input($input) {
 		type="text"
 		value="' . get_option($name) . '"'
 	. '>';
+
+	if ($description) {
+		echo '<p class="description">' . $description . '</p>';
+	}
 }
 
 add_action('admin_menu', function() use($page_slug, $title) {
@@ -36,8 +41,16 @@ add_action('admin_init', function() use($page_slug) {
 	// Register settings so that POST is automatically handled
 	register_setting($page_slug, 'hero_headline' );
 	register_setting($page_slug, 'hero_description' );
+	register_setting($page_slug, 'site_owner' );
 
-	// Add new section to theme-settings page
+	// Add new sections to theme-settings page
+	add_settings_section(
+		'general',
+		'General',
+		function() { echo '<p>General Settings for the Theme.</p>'; },
+		$page_slug
+	);
+
 	add_settings_section(
 		'landing_page',
 		'Landing Page',
@@ -45,7 +58,16 @@ add_action('admin_init', function() use($page_slug) {
 		$page_slug
 	);
 
-	// Add a field to use in our landing_page section
+	// Add fields to use in the sections
+	add_settings_field(
+		'site_owner',
+		'Site Owner / Company',
+		'text_input',
+		$page_slug,
+		'general',
+		['name' => 'site_owner', 'description' => 'Will be used e.g. for the Footer.']
+	);
+
 	add_settings_field(
 		'hero_headline', // $id
 		'Hero Headline', // $title
