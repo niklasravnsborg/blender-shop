@@ -6,13 +6,15 @@ h1, h2, h3
 
 p
 	line-height: 1.6
+	a
+		border-bottom: 1px solid $accent
+		&:hover
+			border-color: darken($accent, 10%)
 
 a
-	border-bottom: 1px solid $accent
 	color: $accent
 	text-decoration: none
 	&:hover
-		border-color: darken($accent, 10%)
 		color: darken($accent, 10%)
 
 hr
