@@ -1,12 +1,11 @@
 header.header
 	.container
-		a.header__logo.shop-logo(href="/")
+		a.header__logo.shop-logo(href="{{ site.url }}")
 			include /assets/img/blender-logo.svg
 			h1.shop-logo__name {{ site.name }}
 
 		nav.header__nav
-			a(href="#") Contact
-			| 
-			a(href="#") Account
-			| 
-			a(href="#") Cart
+			| {% for item in header_menu.get_items %}
+			a(href="{{ item.get_link }}") {{ item.title }}
+			| {% if not loop.last %} {% endif %}
+			| {% endfor %}
