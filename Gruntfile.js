@@ -42,6 +42,7 @@ module.exports = function(grunt) {
 				src: [
 					'*.*',
 					'assets/**/*',
+					'functions/**/*',
 					'!assets/css/**'
 				],
 				dest: 'dist/',
