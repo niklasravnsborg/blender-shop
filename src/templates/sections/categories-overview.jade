@@ -2,10 +2,10 @@
 	.container.container--no-space
 		each cat in categoriesOverview
 			.categories-overview__category
-				h4= cat.category
-				p= cat.description
-				hr
-				.product-card
+				.categories-overview__description
+					h4.categories-overview__title= cat.category
+					p= cat.description
+				.categories-overview__product.product-card
 					h5.product-card__title= cat.exampleProduct.title
 					p= cat.exampleProduct.description
 					.product-card__meta
