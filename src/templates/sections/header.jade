@@ -2,7 +2,12 @@ header.header
 	.container
 		a.header__logo.shop-logo(href="{{ site.url }}")
 			include /assets/img/blender-logo.svg
+
+			| {% if function('is_home') %}
 			h1.shop-logo__name {{ site.name }}
+			| {% else %}
+			span.shop-logo__name {{ site.name }}
+			| {% endif %}
 
 		nav.header__nav
 			| {% for item in header_menu.get_items %}
