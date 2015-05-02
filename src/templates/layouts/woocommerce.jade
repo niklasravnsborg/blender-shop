@@ -1,0 +1,9 @@
+| {% extends "templates/layouts/index.twig" %}
+
+| {% block content %}
+
+main.page-content
+	.container
+		| {{ function('woocommerce_content') }}
+
+| {% endblock %}

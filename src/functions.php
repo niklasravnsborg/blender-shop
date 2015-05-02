@@ -10,6 +10,11 @@ if (! class_exists('Timber')) {
 // remove the admin bar from the front end
 add_filter('show_admin_bar', '__return_false');
 
+// WooCommerce support
+add_action('after_setup_theme', function () {
+	add_theme_support('woocommerce');
+});
+
 // INCLUDES
 include 'functions/menus.php'; // Menus
 include 'functions/settings.php'; // Settings Page
