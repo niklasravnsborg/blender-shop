@@ -3,6 +3,11 @@
 	line-height: 1
 	outline: none
 
+	&:first-child
+		margin-top: 0
+	&:last-child
+		margin-bottom: 0
+
 body
 	color: $dark2
 	font-family: "Quicksand"
@@ -10,9 +15,3 @@ body
 
 	background: white
 	text-rendering: optimizeLegibility
-
-	*
-		&:first-child
-			margin-top: 0
-		&:last-child
-			margin-bottom: 0
