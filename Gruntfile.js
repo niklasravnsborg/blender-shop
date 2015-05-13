@@ -58,7 +58,10 @@ module.exports = function(grunt) {
 			compile: {
 				expand: true,
 				cwd: 'src/',
-				src: 'templates/layouts/**/*.jade',
+				src: [
+					'templates/layouts/**/*.jade',
+					'templates/components/**/*.jade'
+				],
 				dest: 'dist/',
 				ext: '.twig'
 			}
