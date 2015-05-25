@@ -17,8 +17,20 @@ function archive_loop() {
 	}
 }
 
-if (is_singular('product')) {
+
+if (is_product()) {
+
+	the_post();
+	$product = new WC_Product(get_the_ID());
+
 	$context = Timber::get_context();
+	$context['title']     = get_the_title();
+	$context['link']      = get_permalink();
+	$context['thumbnail'] = wp_get_attachment_url(get_post_thumbnail_id());
+	$context['price']     = $product->get_price_html();
+	$context['id']        = esc_attr( $product->id );
+	$context['cart_add']  = $product->single_add_to_cart_text();
+
 	Timber::render('templates/layouts/woocommerce.twig', $context);
 
 } else {
