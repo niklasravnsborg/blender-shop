@@ -1,0 +1,17 @@
+| {% extends "templates/layouts/index.twig" %}
+
+| {% block content %}
+
+main.page-content
+	.container
+		h1.page-title {{ wp_title }}
+		
+.container.cart
+	| {% for product in cart_products %}
+	.cart__product
+		.cart__product__info {{ product.title }} ({{ product.price }})
+		{{ product.quantity }}
+		.cart__product__price {{ product.subtotal }}
+	| {% endfor %}
+
+| {% endblock %}
