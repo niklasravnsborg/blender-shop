@@ -147,6 +147,11 @@ module.exports = function(grunt) {
 			img: {
 				files: ['src/**/*.{jpg,png,svg}'],
 				tasks: ['copy']
+			},
+
+			js: {
+				files: ['src/**/*.js'],
+				tasks: ['copy']
 			}
 		}
 	});
