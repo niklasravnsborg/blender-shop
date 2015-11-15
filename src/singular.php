@@ -2,6 +2,10 @@
 
 $context = Timber::get_context();
 
+// WooCommerce Notices
+$context['wc_notices'] = wc_get_notices();
+wc_clear_notices();
+
 if (is_cart()) {
 
 	foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
