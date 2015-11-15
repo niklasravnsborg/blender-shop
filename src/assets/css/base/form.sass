@@ -24,10 +24,24 @@ input[type="text"], input[type="password"], textarea
 textarea
 	resize: vertical
 
-input[type="reset"], input[type="submit"], button
+input[type="reset"], input[type="submit"], button, .button
 	padding: 10px 20px
+	margin-right: 5px
 	border: 1px solid $dark4
 	border-radius: 100px
+	color: $dark2
 	background: none
 	&:hover
 		border-color: $dark3
+		color: $dark2
+
+	&.right
+		margin-left: 5px
+		margin-right: 0
+
+.button--blue
+	background: $accent
+	color: $light1
+	&:hover
+		background: lighten($accent, 5%)
+		color: $light1

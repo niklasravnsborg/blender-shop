@@ -29,6 +29,8 @@ if (is_cart()) {
 		];
 	}
 
+	$context['action'] = WC()->cart->get_cart_url();
+	$context['checkout_url'] = WC()->cart->get_checkout_url();
 	$context['cart_products'] = $cart_products;
 	Timber::render('templates/layouts/cart.twig', $context);
 

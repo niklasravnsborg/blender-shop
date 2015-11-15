@@ -5,13 +5,18 @@
 main.page-content
 	.container
 		h1.page-title {{ wp_title }}
-		
-.container.cart
-	| {% for product in cart_products %}
-	.cart__product
-		.cart__product__info {{ product.title }} ({{ product.price }})
-		{{ product.quantity }}
-		.cart__product__price {{ product.subtotal }}
-	| {% endfor %}
+
+	form.cart(action="{{ action }}", method="post")
+		.container
+			| {% for product in cart_products %}
+			.cart__product
+				.cart__product__info {{ product.title }} ({{ product.price }})
+				{{ product.quantity }}
+				.cart__product__price {{ product.subtotal }}
+			| {% endfor %}
+		.container
+			{% do action('wp_nonce_field', 'woocommerce-cart') %}
+			a.right.button.button--blue(href="{{ checkout_url }}") Proceed to Checkout
+			input.right(type="submit", name="update_cart" value="Update Cart")
 
 | {% endblock %}

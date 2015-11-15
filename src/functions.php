@@ -15,6 +15,11 @@ add_action('after_setup_theme', function () {
 	add_theme_support('woocommerce');
 });
 
+// form validation
+add_action('wp_nonce_field', function ($action) {
+	wp_nonce_field($action);
+});
+
 // INCLUDES
 include 'functions/menus.php'; // Menus
 include 'functions/settings.php'; // Settings Page
