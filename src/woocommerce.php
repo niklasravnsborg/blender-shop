@@ -17,13 +17,17 @@ function archive_loop() {
 	}
 }
 
+$context = Timber::get_context();
+
+// WooCommerce Notices
+$context['wc_notices'] = wc_get_notices();
+wc_clear_notices();
 
 if (is_product()) {
 
 	the_post();
 	$product = new WC_Product(get_the_ID());
 
-	$context = Timber::get_context();
 	$context['title']     = get_the_title();
 	$context['link']      = get_permalink();
 	$context['thumbnail'] = wp_get_attachment_url(get_post_thumbnail_id());
@@ -34,7 +38,5 @@ if (is_product()) {
 	Timber::render('templates/layouts/woocommerce.twig', $context);
 
 } else {
-	$context = Timber::get_context();
 	Timber::render('templates/layouts/commerce_archive.twig', $context);
-
 }
