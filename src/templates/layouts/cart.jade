@@ -11,12 +11,17 @@ main.page-content
 			| {% for product in cart_products %}
 			.cart__product
 				.cart__product__info {{ product.title }} ({{ product.price }})
-				{{ product.quantity }}
+				| {% if product.quantity %}
+				.cart__product__quantity.counter
+					button.counter__subtract(type="button") -
+					input.counter__number(name="{{ product.quantity.name }}", type="number", value="{{ product.quantity.value }}", min="{{ product.quantity.min }}", max="{{ product.quantity.max }}")
+					button.counter__add(type="button") +
+				| {% endif %}
 				.cart__product__price {{ product.subtotal }}
 			| {% endfor %}
 		.container
-			{% do action('wp_nonce_field', 'woocommerce-cart') %}
+			| {% do action('wp_nonce_field', 'woocommerce-cart') %}
 			a.right.button.button--blue(href="{{ checkout_url }}") Proceed to Checkout
-			input.right(type="submit", name="update_cart" value="Update Cart")
+			button.right(name="update_cart", type="submit", value="Update Cart") Update Cart
 
 | {% endblock %}

@@ -1,0 +1,40 @@
+.counter
+	border-radius: 100px
+	font-size: 0
+
+	> *
+		font-size: 1rem
+
+	&__add, &__subtract
+		margin: 0
+
+	&__add
+		border-top-left-radius: 0
+		border-bottom-left-radius: 0
+
+	&__subtract
+		border-top-right-radius: 0
+		border-bottom-right-radius: 0
+
+	&__number
+		display: inline-block
+		box-sizing: content-box
+		width: 2.5rem
+		height: 1rem
+		padding: 10px
+		border: 1px solid $dark4
+		border-left: none
+		border-right: none
+		text-align: center
+		vertical-align: top
+
+		*
+			border: 0
+			padding: 0
+
+		// remove spinners
+		-moz-appearance: textfield
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button
+			-webkit-appearance: none
+			margin: 0
