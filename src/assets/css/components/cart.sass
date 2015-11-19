@@ -7,17 +7,23 @@
 		&:last-child
 			border-bottom: none
 
-		&__info, &__quantity, &__price
-			float: left
+		@media (max-width: 559px)
+			&__info, &__quantity, &__price
+				margin: .5em 0
 
-		&__info
-			width: 65%
+		@media (min-width: 560px)
+			&__info, &__quantity, &__price
+				float: left
 
-		&__quantity
-			width: 20%
-			margin-top: -.7rem
+			&__info
+				width: 50%
 
-		&__price
-			float: right
-			width: 15%
-			text-align: right
+			&__quantity
+				width: 35%
+				margin-top: -.7rem
+				text-align: right
+
+			&__price
+				float: right
+				width: 15%
+				text-align: right
