@@ -6,23 +6,28 @@
 
 	&__logo
 		display: block
+		float: left
 
-		@media (max-width: 499px)
-			margin-bottom: 10px
-
-		@media (min-width: 500px)
-			float: left
+		@media (max-width: 739px)
+			margin-top: 2px
 
 	&__nav
-		@media (min-width: 500px)
+		@media (max-width: 739px)
+			position: relative
+			top: 10px
+			clear: both
+			margin-bottom: 10px
+
+			&--hidden
+				display: none
+
+		@media (min-width: 740px)
 			float: right
-			margin-top: .2em
+			margin-top: .45em
+			display: inline-block
 
 		a
-			display: inline-block
 			padding: .3em 0
-			margin-right: 10px
-
 			color: $dark2
 			text-transform: uppercase
 			letter-spacing: -1px
@@ -32,3 +37,26 @@
 
 			&:last-child
 				margin-right: 0
+				border-bottom: none
+
+			@media (max-width: 739px)
+				display: block
+				padding: .6em 0
+				border-bottom: 1px solid $dark4
+
+			@media (min-width: 740px)
+				margin-right: 10px
+
+		&__toggle
+			float: right
+			padding: 0
+			border: none
+			margin: 3px 0 0
+
+			path
+				stroke: $dark1
+				stroke-width: 3
+				stroke-linecap: round
+
+			@media (min-width: 740px)
+				display: none

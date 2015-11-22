@@ -9,6 +9,8 @@ header.header
 			span.shop-logo__name {{ site.name }}
 			| {% endif %}
 
+		button.header__nav__toggle: include /assets/img/menu.svg
+
 		nav.header__nav
 			| {% for item in header_menu.get_items %}
 			a(href="{{ item.get_link }}") {{ item.title }}
