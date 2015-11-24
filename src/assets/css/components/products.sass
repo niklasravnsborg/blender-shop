@@ -8,9 +8,13 @@
 
 		float: left
 		display: block
-		width: 28%
-		width: calc(33.33% - 2*#{$gutter})
+		width: 48%
+		width: calc(50% - 2*#{$gutter})
 		margin: $gutter
+
+		@media (min-width: 550px)
+			width: 28%
+			width: calc(33.33% - 2*#{$gutter})
 
 		list-style: none
 		overflow: hidden
