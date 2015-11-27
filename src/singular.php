@@ -32,7 +32,9 @@ if (is_cart()) {
 		];
 	}
 
+	$context['cart_empty'] = WC()->cart->is_empty();
 	$context['action'] = WC()->cart->get_cart_url();
+	$context['shop_url'] = wc_get_page_permalink('shop');
 	$context['checkout_url'] = WC()->cart->get_checkout_url();
 	$context['cart_products'] = $cart_products;
 	Timber::render('templates/layouts/cart.twig', $context);
