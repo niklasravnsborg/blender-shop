@@ -1,0 +1,18 @@
+| {% extends "templates/layouts/index.twig" %}
+
+| {% block content %}
+
+main.page-content
+	.container
+		h1.page-title {{ wp_title }}
+		form(name="checkout", method="post", action="{{ checkout_url }}", enctype="multipart/form-data")
+
+			| {% if checkout.checkout_fields|length > 0 %}
+			| {% do action('woocommerce_checkout_billing') %}
+			| {% do action('woocommerce_checkout_shipping') %}
+			| {% endif %}
+
+			<h3>Your order</h3>
+			| {% do action('woocommerce_checkout_order_review') %}
+
+| {% endblock %}

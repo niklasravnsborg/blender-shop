@@ -39,6 +39,12 @@ if (is_cart()) {
 	$context['cart_products'] = $cart_products;
 	Timber::render('templates/layouts/cart.twig', $context);
 
+} elseif (is_checkout()) {
+
+	$context['checkout'] = WC()->checkout();
+	$context['checkout_url'] = $get_checkout_url;
+	Timber::render('templates/layouts/checkout.twig', $context);
+
 } else {
 	$post = new TimberPost();
 	$context['post'] = $post;
