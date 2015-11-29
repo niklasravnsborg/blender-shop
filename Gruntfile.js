@@ -43,7 +43,8 @@ module.exports = function(grunt) {
 					'*.*',
 					'assets/**/*',
 					'functions/**/*',
-					'!assets/css/**'
+					'templates/**/*.twig',
+					'!assets/css/**',
 				],
 				dest: 'dist/',
 			},
@@ -137,6 +138,11 @@ module.exports = function(grunt) {
 			jade: {
 				files: ['src/templates/**/*.jade', 'src/data/*.yml'],
 				tasks: ['jade']
+			},
+
+			twig: {
+				files: ['src/templates/**/*.twig'],
+				tasks: ['copy']
 			},
 
 			css: {
