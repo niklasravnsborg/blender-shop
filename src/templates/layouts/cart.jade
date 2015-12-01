@@ -10,6 +10,7 @@ main.page-content
 	.container
 		p Your cart is currently empty.
 		a.button.button--blue(href="{{ shop_url }}") Return To Shop
+	
 	| {% else %}
 	form.cart(action="{{ action }}", method="post")
 		.container
@@ -24,11 +25,12 @@ main.page-content
 				| {% endif %}
 				.cart__product__price {{ product.subtotal }}
 			| {% endfor %}
+
 		.container
 			| {% do action('wp_nonce_field', 'woocommerce-cart') %}
 			a.right.button.button--blue(href="{{ checkout_url }}") Proceed to Checkout
 			button.right(name="update_cart", type="submit", value="Update Cart") Update Cart
+
 	| {% endif %}
-	
 
 | {% endblock %}

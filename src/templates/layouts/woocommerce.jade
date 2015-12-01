@@ -8,8 +8,7 @@ main.page-content.product-page
 		h1 {{ title }}
 		p {{ price }}
 		form(method="post")
-			input(type="hidden" name="add-to-cart" value="{{ id }}")
+			input(type="hidden", name="add-to-cart", value="{{ id }}")
 			button(type="submit") {{ cart_add }}
-		
 
 | {% endblock %}
