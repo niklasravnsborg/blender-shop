@@ -8,8 +8,42 @@ main.page-content
 		form(name="checkout", method="post", action="{{ checkout_url }}", enctype="multipart/form-data")
 
 			| {% if checkout.checkout_fields|length > 0 %}
-			| {% do action('woocommerce_checkout_billing') %}
+			
+			| {% if cart.ship_to_billing_address_only and cart.needs_shipping %}
+			h3 Billing & Shipping
+			| {% else %}
+			h3 Billing Details
+			| {% endif %}
+
+			| {% for key, field in checkout.checkout_fields['billing'] %}
+			| {{ function('woocommerce_form_field', key, field, checkout.get_value(key)) }}
+			| {% endfor %}
+			
+			| {% if not is_user_logged_in and checkout.enable_signup %}
+			
+			| {% if checkout.enable_guest_checkout %}
+
+			| {% if checkout.get_value('createaccount') or woocommerce_create_account_default_checked %}
+			| {% set checked = true %}
+			| {% else %}
+			| {% set checked = false %}
+			| {% endif %}
+			<input {{ function('checked', checked, true) }} type="checkbox" name="createaccount" value="1">
+			label Create an account?
+
+			| {% if checkout.checkout_fields['account'] %}
+			p Create an account by entering the information below. If you are a returning customer please login at the top of the page.
+			| {% for key, field in checkout.checkout_fields['account'] %}
+			| {{ function('woocommerce_form_field', key, field, checkout.get_value(key)) }}
+			| {% endfor %}
+			| {% endif %}
+			
+			| {% endif %}
+			
+			| {% endif %}
+			
 			| {% do action('woocommerce_checkout_shipping') %}
+			
 			| {% endif %}
 
 			h3 Your order

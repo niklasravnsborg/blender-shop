@@ -41,8 +41,12 @@ if (is_cart()) {
 
 } elseif (is_checkout()) {
 
-	$context['checkout'] = WC()->checkout();
+	$context['is_user_logged_in'] = is_user_logged_in();
+	$context['woocommerce_create_account_default_checked'] = apply_filters('woocommerce_create_account_default_checked', false);
 	$context['checkout_url'] = $get_checkout_url;
+	$context['checkout'] = WC()->checkout();
+	$context['cart'] = WC()->cart;
+
 	Timber::render('templates/layouts/checkout.twig', $context);
 
 } else {
