@@ -26,6 +26,7 @@ if (is_cart()) {
 
 		$cart_products[] = [
 			'title'     => apply_filters('woocommerce_cart_item_name', $_product->get_title(), $cart_item, $cart_item_key),
+			'remove_url' => WC()->cart->get_remove_url($cart_item_key),
 			'price'     => apply_filters('woocommerce_cart_item_price', WC()->cart->get_product_price($_product), $cart_item, $cart_item_key),
 			'quantity'  => $quantity,
 			'subtotal'  => apply_filters('woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal($_product, $cart_item['quantity']), $cart_item, $cart_item_key)
@@ -37,6 +38,7 @@ if (is_cart()) {
 	$context['shop_url'] = wc_get_page_permalink('shop');
 	$context['checkout_url'] = WC()->cart->get_checkout_url();
 	$context['cart_products'] = $cart_products;
+
 	Timber::render('templates/layouts/cart.twig', $context);
 
 } elseif (is_checkout()) {

@@ -16,7 +16,9 @@ main.page-content
 		.container
 			| {% for product in cart_products %}
 			.cart__product
-				.cart__product__info {{ product.title }} ({{ product.price }})
+				.cart__product__info
+					a(href="{{ product.remove_url }}" title="Remove this item ") × 
+					| {{ product.title }} ({{ product.price }})
 				| {% if product.quantity %}
 				.cart__product__quantity.counter
 					button.counter__subtract(type="button") -
